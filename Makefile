@@ -1,25 +1,15 @@
 # Author: Rémi Louf <remi@sciti.es>
-# 2000 US Metropolitan Atlas
+# Date: 17/01/2017
+# 2010 US Metropolitan Atlas
 # Census geographies for each Metropolitan Area in the US
 
 
 
-# Extract all geographies
-all: counties tracts blockgroups blocks msa us
+all: counties tracts blockgroups
 
-# Census Geographies
-us: shp_us
-msa: shp_msa
-counties: shp_counties
-tracts: shp_tracts
-blockgroups: shp_blockgroups
-blocks: shp_blocks
-
-# Other features
-#roads:
-#water:
-#landmarks:
-#topojson extraction
+blockgroups: download_blockgroups  shapefile_blockgroups contiguity_blockgroups
+tracts: download_tracts  shapefile_tracts contiguity_tracts
+counties: download_counties  shapefile_counties contiguity_counties
 
 
 
@@ -158,6 +148,11 @@ shapefile_blockgroups: data/misc/cbsa_names.txt data/crosswalks/cbsa_blockgroup.
 	mkdir -p data/shp/cbsa
 	python2 bin/shp/blockgroups.py
 
+## Contiguity matrix for blockgroups
+contiguity_blockgroups: shapefile_blockgroups
+	mkdir -p  data/contiguity/cbsa
+	python2 bin/contiguity/blockgroups.py
+
 
 
 # Tracts
@@ -183,3 +178,17 @@ data/crosswalks/cbsa_county.txt: data/gz/List1.xls
 shapefile_counties: data/crosswalks/cbsa_county.txt data/misc/cbsa_names.txt 
 	mkdir -p data/shp/cbsa
 	python2 bin/shp/counties.py
+
+## Contiguity matrix for counties
+contiguity_counties: shapefile_counties
+	mkdir -p  data/contiguity/cbsa
+	python2 bin/contiguity/counties.py
+
+
+
+
+#########
+# CLEAN #
+#########
+clean:
+	rm -r data/gz data/shp data/adjacency data/surface_area data/crosswalks data/misc/cbsa_names.txt
