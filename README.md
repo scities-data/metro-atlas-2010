@@ -1,4 +1,4 @@
-# US Metropolitan atlas 2014
+# US Metropolitan atlas 2010
 
 Provides an Atlas of the US Micropolitana and Metropolitan Statistical Areas
 (MSAs) delineated for
