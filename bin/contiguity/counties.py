@@ -29,7 +29,7 @@ with open('data/misc/cbsa_names.txt', 'r') as source:
 # Compute the adjacency list
 #
 for i,city in enumerate(cbsa):
-    print "Adjacency %s (%s/%s)"%(cbsa[city], i+1, len(cbsa))
+    print "Contiguity matrix for %s (%s/%s)"%(cbsa[city], i+1, len(cbsa))
 
     ## Import blockgroups
     counties = {}
