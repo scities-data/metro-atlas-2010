@@ -44,8 +44,8 @@ for st in states:
             'ESRI Shapefile') as source:
         source_crs = source.crs
         for f in source:
-            county = (f['properties']['STATEFP'] +
-                    f['properties']['COUNTYFP']).encode('utf8')
+            county = (f['properties']['STATEFP10'] +
+                    f['properties']['COUNTYFP10']).encode('utf8')
 
             ## Skip rural counties
             try:
@@ -53,7 +53,7 @@ for st in states:
 
                 if cbsa not in cbsa_blockgroup:
                     cbsa_blockgroup[cbsa] = []
-                cbsa_blockgroup[cbsa].append(f['properties']['GEOID'])
+                cbsa_blockgroup[cbsa].append(f['properties']['GEOID10'])
 
             except:
                 pass 

@@ -153,6 +153,10 @@ data/crosswalks/cbsa_blockgroup.txt: download_blockgroups data/crosswalks/cbsa_c
 	mkdir -p $(dir $@)
 	python2 bin/crosswalks/cbsa_blockgroup.py
 
+## Shapefile blockgroups for each CBSA
+shapefile_blockgroups: data/misc/cbsa_names.txt data/crosswalks/cbsa_blockgroup.txt
+	mkdir -p data/shp/cbsa
+	python2 bin/shp/blockgroups.py
 
 
 # Counties
