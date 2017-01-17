@@ -159,6 +159,14 @@ shapefile_blockgroups: data/misc/cbsa_names.txt data/crosswalks/cbsa_blockgroup.
 	python2 bin/shp/blockgroups.py
 
 
+
+# Tracts
+## Crosswalk tracts and CBSA
+data/crosswalks/cbsa_tract.txt: download_tracts data/crosswalks/cbsa_county.txt
+	mkdir -p $(dir $@)
+	python2 bin/crosswalks/cbsa_tract.py
+
+
 # Counties
 ## Crosswalk counties and CBSA
 data/crosswalks/cbsa_county.txt: data/gz/List1.xls
