@@ -166,6 +166,12 @@ data/crosswalks/cbsa_tract.txt: download_tracts data/crosswalks/cbsa_county.txt
 	mkdir -p $(dir $@)
 	python2 bin/crosswalks/cbsa_tract.py
 
+## Shapefile tracts for each CBSA
+shapefile_tracts: data/misc/cbsa_names.txt data/crosswalks/cbsa_tract.txt
+	mkdir -p data/shp/cbsa
+	python2 bin/shp/tracts.py
+
+
 
 # Counties
 ## Crosswalk counties and CBSA
