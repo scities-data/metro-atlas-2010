@@ -166,6 +166,11 @@ shapefile_tracts: data/misc/cbsa_names.txt data/crosswalks/cbsa_tract.txt
 	mkdir -p data/shp/cbsa
 	python2 bin/shp/tracts.py
 
+## Adjacency matrix for tracts
+contiguity_tracts: shapefile_tracts
+	mkdir -p  data/contiguity/cbsa
+	python2 bin/contiguity/tracts.py
+
 
 
 # Counties
