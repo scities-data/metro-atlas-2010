@@ -11,7 +11,7 @@ much needed in my research.
 
 ## Features available
 
-Data tabulation geographical levels for the 2014 US Census:
+Data tabulation geographical levels for the 2010 US Census:
 
 * Census Block Groups boundaries (blockgroups)
 * Census Tracts boundaries (tracts)
